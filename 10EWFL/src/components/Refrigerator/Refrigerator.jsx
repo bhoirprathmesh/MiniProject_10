@@ -192,114 +192,122 @@ const Refrigerator = () => {
   return (
     <div className="container py-4">
       <ToastContainer />
-      <h1 className="text-center mb-4">Refrigerator Recycling</h1>
+      <h1 className="text-center mb-4 fw-bold">Refrigerator Recycling</h1>
       <form onSubmit={handleSubmit}>
-        {/* Brand Selection */}
-        <div className="form-group mb-3">
-          <label htmlFor="brand">Select Brand:</label>
-          <select
-            id="brand"
-            value={selectedBrand}
-            onChange={handleBrandChange}
-            className="form-control"
-          >
-            <option value="">Select Brand</option>
-            {brands.map((brand) => (
-              <option key={brand.brand} value={brand.brand}>
-                {brand.brand}
-              </option>
-            ))}
-          </select>
-        </div>
+        <div className="row">
+          {/* Select Category */}
+          <div className="col-md-6 mb-3">
+            <label htmlFor="brand">Select Category:</label>
+            <select
+              id="brand"
+              value={selectedBrand}
+              onChange={handleBrandChange}
+              className="form-control"
+            >
+              <option value="">Select Category</option>
+              {brands.map((brand) => (
+                <option key={brand.brand} value={brand.brand}>
+                  {brand.brand}
+                </option>
+              ))}
+            </select>
+          </div>
 
-        {/* Model Selection */}
-        <div className="form-group mb-3">
-          <label htmlFor="model">Select Model:</label>
-          <select
-            id="model"
-            value={selectedModel}
-            onChange={(e) => setSelectedModel(e.target.value)}
-            className="form-control"
-            disabled={!selectedBrand}
-          >
-            <option value="">Select Model</option>
-            {models.map((model) => (
-              <option key={model} value={model}>
-                {model}
-              </option>
-            ))}
-          </select>
-        </div>
+          {/* Select Items */}
+          <div className="col-md-6 mb-3">
+            <label htmlFor="model">Select Items:</label>
+            <select
+              id="model"
+              value={selectedModel}
+              onChange={(e) => setSelectedModel(e.target.value)}
+              className="form-control"
+              disabled={!selectedBrand}
+            >
+              <option value="">Select Items</option>
+              {models.map((model) => (
+                <option key={model} value={model}>
+                  {model}
+                </option>
+              ))}
+            </select>
+          </div>
 
-        {/* Recycling Item Price */}
-        <div className="form-group mb-3">
-          <label htmlFor="recycleItemPrice">Recycle Item Price:</label>
-          <input
-            type="number"
-            id="recycleItemPrice"
-            value={recycleItemPrice}
-            onChange={(e) => setRecycleItemPrice(e.target.value)}
-            className="form-control"
-          />
-        </div>
+          {/* Recycle Item Price */}
+          <div className="col-md-6 mb-3">
+            <label htmlFor="recycleItemPrice">Recycle Item Price:</label>
+            <input
+              type="number"
+              id="recycleItemPrice"
+              value={recycleItemPrice}
+              onChange={(e) => setRecycleItemPrice(e.target.value)}
+              className="form-control"
+            />
+          </div>
 
-        {/* Pickup Date */}
-        <div className="form-group mb-3">
-          <label htmlFor="pickupDate">Pickup Date:</label>
-          <input
-            type="date"
-            id="pickupDate"
-            value={pickupDate}
-            min={currentDate}
-            onChange={(e) => setPickupDate(e.target.value)}
-            className="form-control"
-          />
-        </div>
+          {/* Pickup Date */}
+          <div className="col-md-6 mb-3">
+            <label htmlFor="pickupDate">Pickup Date:</label>
+            <input
+              type="date"
+              id="pickupDate"
+              value={pickupDate}
+              min={currentDate}
+              onChange={(e) => setPickupDate(e.target.value)}
+              className="form-control"
+            />
+          </div>
 
-        {/* Pickup Time */}
-        <div className="form-group mb-3">
-          <label htmlFor="pickupTime">Pickup Time:</label>
-          <input
-            type="time"
-            id="pickupTime"
-            value={pickupTime}
-            onChange={(e) => setPickupTime(e.target.value)}
-            className="form-control"
-          />
-        </div>
+          {/* Pickup Time */}
+          <div className="col-md-6 mb-3">
+            <label htmlFor="pickupTime">Pickup Time:</label>
+            <input
+              type="time"
+              id="pickupTime"
+              value={pickupTime}
+              onChange={(e) => setPickupTime(e.target.value)}
+              className="form-control"
+            />
+          </div>
 
-        {/* Address */}
-        <div className="form-group mb-3">
-          <label htmlFor="address">Pickup Address:</label>
-          <input
-            type="text"
-            id="address"
-            value={address}
-            onChange={(e) => setAddress(e.target.value)}
-            className="form-control"
-          />
-        </div>
+          {/* Location */}
+          <div className="col-md-6 mb-3">
+            <label htmlFor="address">Location:</label>
+            <input
+              type="text"
+              id="address"
+              value={address}
+              onChange={(e) => setAddress(e.target.value)}
+              className="form-control"
+            />
+          </div>
 
-        {/* Facility Selection */}
-        <div className="form-group mb-3">
-          <label htmlFor="facility">Select Facility:</label>
-          <select
-            id="facility"
-            value={selectedFacility}
-            onChange={(e) => setSelectedFacility(e.target.value)}
-            className="form-control"
-          >
-            <option value="">Select Facility</option>
-            {facilityData.map((facility) => (
-              <option key={facility._id} value={facility.name}>
-                {facility.name}
-              </option>
-            ))}
-          </select>
+          {/* Select Facility */}
+          <div className="col-md-6 mb-3">
+            <label htmlFor="facility">Select Facility:</label>
+            <select
+              id="facility"
+              value={selectedFacility}
+              onChange={(e) => setSelectedFacility(e.target.value)}
+              className="form-control"
+            >
+              <option value="">Select Facility</option>
+              {facilityData.map((facility) => (
+                <option key={facility._id} value={facility.name}>
+                  {facility.name}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          {/* Phone Number */}
+          <div className="col-md-6 mb-3">
+            <label htmlFor="phone">Phone:</label>
+            <input type="tel" id="phone" className="form-control" placeholder="Enter Phone Number" />
+          </div>
         </div>
 
         {/* Submit Button */}
-        <button type="submit" className="btn btn-primary w-100">
+        <button type="submit" className="btn btn-success w-100">
           {isLoading ? "Submitting..." : "Submit"}
         </button>
       </form>
