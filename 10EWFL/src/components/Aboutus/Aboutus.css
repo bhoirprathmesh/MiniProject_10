@@ -1,0 +1,20 @@
+.about-us h2 {
+    font-weight: 700;
+  }
+  
+  .about-us p {
+    margin-bottom: 1rem;
+  }
+  
+  .about-us .btn {
+    min-width: 160px;
+  }
+  
+  .about-us .btn-outline-success {
+    border-width: 2px;
+  }
+  
+  .b:hover {
+    background-color: white;
+    color: green !important;
+  }
