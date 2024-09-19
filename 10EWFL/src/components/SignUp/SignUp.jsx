@@ -26,7 +26,7 @@ const RegistrationForm = () => {
   return (
     <div className="d-flex align-items-center justify-content-center min-vh-100 bg-light">
       <div className="bg-white shadow-lg rounded p-4 w-100" style={{ maxWidth: '400px' }}>
-        <h2 className="text-center mb-4">Welcome to Elocate</h2>
+        <h2 className="text-center mb-4">Welcome to ESeva</h2>
         <p className="text-center text-muted mb-4">Please enter your details to register</p>
         <form onSubmit={handleSubmit}>
           <div className="mb-3">

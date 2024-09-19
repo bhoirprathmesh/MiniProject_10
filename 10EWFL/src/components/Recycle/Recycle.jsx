@@ -40,6 +40,7 @@ const RecycleCenter = () => {
       icon: <FaRecycle size={40} />, // Other items icon
       title: 'Other',
       description: 'Responsible recycling of any other Electronic Devices. Proper dismantling and recycling of metal and electronic components. Ensure it\'s not working before recycling.',
+      link: '/recycle/others'
     },
   ];
 

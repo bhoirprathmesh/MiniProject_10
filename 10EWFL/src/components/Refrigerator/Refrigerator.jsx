@@ -307,7 +307,7 @@ const Refrigerator = () => {
         </div>
 
         {/* Submit Button */}
-        <button type="submit" className="btn btn-success w-100">
+        <button type="submit" className="btn btn-success w-100 mt-3 mb-5">
           {isLoading ? "Submitting..." : "Submit"}
         </button>
       </form>

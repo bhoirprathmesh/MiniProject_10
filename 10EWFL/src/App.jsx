@@ -13,6 +13,8 @@ import FacilityMap from './components/Efacility/Efacility';
 import Accessories from './components/Accessories/Accessories';
 import Television from './components/Television/Television';
 import Refrigerator from './components/Refrigerator/Refrigerator';
+import Others from './components/Others/Others';
+import Rules from './components/Rules/Rules';
 
 function App() {
   return (
@@ -25,6 +27,8 @@ function App() {
           <Route path="/SignUp" element={<RegistrationForm />} />
           <Route path="/aboutus" element={<AboutUs />} />
           <Route path="/e-facilities" element={<FacilityMap />} />
+          <Route path="/rules" element={<Rules />} />
+          
           
           {/* Route for Recycle Center */}
           <Route path="/recycle" element={<RecycleCenter />} />
@@ -35,6 +39,7 @@ function App() {
           <Route path="/recycle/accessories" element={<Accessories />} />
           <Route path="/recycle/television" element={<Television />} />
           <Route path="/recycle/refrigerator" element={<Refrigerator />} />
+          <Route path="/recycle/others" element={<Others />} />
           
         </Routes>
         <Footer />
