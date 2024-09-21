@@ -25,15 +25,16 @@ const RegistrationForm = () => {
 
   return (
     <div className="d-flex align-items-center justify-content-center min-vh-100 bg-light">
-      <div className="bg-white shadow-lg rounded p-4 w-100" style={{ maxWidth: '400px' }}>
-        <h2 className="text-center mb-4">Welcome to ESeva</h2>
-        <p className="text-center text-muted mb-4">Please enter your details to register</p>
+      <div className="bg-white shadow-lg rounded p-4 w-100 mt-5 mb-5" style={{ maxWidth: '500px' }}>
+        <h2 className="text-center mb-1 fw-bold" style={{ color: '#28a745' }}>Welcome to ESeva</h2>
+        <p className="text-dark text-center text-muted mb-4">Please enter your details to register</p>
         <form onSubmit={handleSubmit}>
           <div className="mb-3">
+          <label>Username</label>
             <input
               type="text"
               name="username"
-              placeholder="User Name"
+              placeholder="Username"
               value={formData.username}
               onChange={handleChange}
               className="form-control"
@@ -41,6 +42,7 @@ const RegistrationForm = () => {
             />
           </div>
           <div className="mb-3">
+          <label>Phone Number</label>
             <input
               type="text"
               name="phoneNumber"
@@ -52,6 +54,7 @@ const RegistrationForm = () => {
             />
           </div>
           <div className="mb-3">
+          <label>Email</label>
             <input
               type="email"
               name="email"
@@ -63,6 +66,7 @@ const RegistrationForm = () => {
             />
           </div>
           <div className="mb-3">
+          <label>Full Name</label>
             <input
               type="text"
               name="fullName"
@@ -74,6 +78,7 @@ const RegistrationForm = () => {
             />
           </div>
           <div className="mb-3">
+          <label>Password</label>
             <input
               type={formData.showPassword ? 'text' : 'password'}
               name="password"
@@ -85,6 +90,7 @@ const RegistrationForm = () => {
             />
           </div>
           <div className="mb-3">
+          <label>Confirm Password</label>
             <input
               type={formData.showPassword ? 'text' : 'password'}
               name="confirmPassword"
@@ -107,11 +113,11 @@ const RegistrationForm = () => {
               Show Password
             </label>
           </div>
-          <button type="submit" className="btn btn-primary w-100">
+          <button type="submit" className="btn w-100 fw-bold b btn-success " style={{ backgroundColor: '#28a745', color: 'white' }}>
             Sign Up
           </button>
           <p className="text-center text-muted mt-3">
-            Already have an account? <Link to="/SignIn" className="text-primary">Sign in</Link>
+            Already have an account? <Link to="/SignIn" style={{ color: '#28a745' }}>Sign in</Link>
           </p>
         </form>
       </div>

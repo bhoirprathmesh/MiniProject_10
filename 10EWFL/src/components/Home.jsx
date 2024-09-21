@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Row, Col, Button } from 'react-bootstrap';
-import pickuplogo from '../../assets/Schedule-pickup.png';
-import aboutlogo from '../../assets/revolution-e-waste.webp';
+import pickuplogo from '../assets/Schedule-pickup.png';
+import aboutlogo from '../assets/revolution-e-waste.webp';
 
 const Home = () => {
   return (

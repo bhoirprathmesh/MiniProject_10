@@ -1,20 +1,21 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Header from './components/Header/Header';
-import Login from './components/SignIn/SignIn';
-import RegistrationForm from './components/SignUp/SignUp';
-import Footer from './components/Footer/Footer';
-import Home from './components/Home/Home';
-import AboutUs from './components/Aboutus/Aboutus';
-import RecycleCenter from './components/Recycle/Recycle';
-import Smartphone from './components/Phone/Phone';
-import Laptop from './components/Pc/Pc';
-import FacilityMap from './components/Efacility/Efacility';
-import Accessories from './components/Accessories/Accessories';
-import Television from './components/Television/Television';
-import Refrigerator from './components/Refrigerator/Refrigerator';
-import Others from './components/Others/Others';
-import Rules from './components/Rules/Rules';
+import Header from './components/Header';
+import Login from './components/SignIn';
+import RegistrationForm from './components/SignUp';
+import Footer from './components/Footer';
+import Home from './components/Home';
+import AboutUs from './components/Aboutus';
+import RecycleCenter from './components/Recycle';
+import Smartphone from './components/Phone';
+import Laptop from './components/Pc';
+import FacilityMap from './components/Efacility';
+import Accessories from './components/Accessories';
+import Television from './components/Television';
+import Refrigerator from './components/Refrigerator';
+import Others from './components/Others';
+import Rules from './components/Rules';
+import ContactUs from './components/ContactUs';
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
           <Route path="/aboutus" element={<AboutUs />} />
           <Route path="/e-facilities" element={<FacilityMap />} />
           <Route path="/rules" element={<Rules />} />
+          <Route path="/contactus" element={<ContactUs />} />
           
           
           {/* Route for Recycle Center */}

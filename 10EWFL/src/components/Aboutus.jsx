@@ -1,7 +1,6 @@
 import React from 'react';
 import { Container, Row, Col, Button } from 'react-bootstrap';
-import './Aboutus.css'; 
-import aboutlogo from '../../assets/revolution-e-waste.webp';
+import aboutlogo from '../assets/revolution-e-waste.webp';
 
 const AboutUs = () => {
   return (

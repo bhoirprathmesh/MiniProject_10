@@ -15,8 +15,8 @@ const Login = () => {
 
   return (
     <div className="d-flex align-items-center justify-content-center min-vh-100 bg-light">
-      <div className="bg-white shadow-lg rounded p-4 w-100" style={{ maxWidth: '400px' }}>
-        <h2 className="text-center mb-4">Welcome back</h2>
+      <div className="bg-white shadow-lg rounded p-4 w-100" style={{ maxWidth: '500px' }}>
+        <h2 className="text-center fw-bold" style={{ color: '#28a745' }}>Welcome back</h2>
         <p className="text-center text-muted mb-4">Please enter your details</p>
         <form onSubmit={handleSubmit}>
           <div className="mb-3">
@@ -51,12 +51,14 @@ const Login = () => {
             />
             <label htmlFor="remember" className="form-check-label">Remember Password</label>
           </div>
-          <button type="submit" className="btn btn-primary w-100">Sign In</button>
+          <button type="submit" className="btn w-100 fw-bold b btn-success" style={{ backgroundColor: '#28a745', color: 'white' }}>
+            Sign In
+          </button>
           <p className="text-center mt-3">
-            Don't have an account? <Link to="/SignUp" className="text-primary">Sign Up</Link>
+            Don't have an account? <Link to="/SignUp" style={{ color: '#28a745' }}>Sign Up</Link>
           </p>
           <p className="text-center mt-2">
-            <a href="#" className="text-primary">Forgot password?</a>
+            <a href="#" style={{ color: '#28a745' }}>Forgot password?</a>
           </p>
         </form>
       </div>

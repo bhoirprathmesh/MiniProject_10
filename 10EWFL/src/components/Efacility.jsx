@@ -2,11 +2,11 @@ import React, { useEffect, useRef, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
 import { FaCheckCircle, FaTimesCircle } from 'react-icons/fa';
 import 'mapbox-gl/dist/mapbox-gl.css';
-import getLocation from '../utils/getLocation';
-import { calculateDistance } from '../utils/calculateLocation';
+import getLocation from './utils/getLocation';
+import { calculateDistance } from './utils/calculateLocation';
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
-import { facility } from '../data/facility';
+import { facility } from './data/facility';
 import { Link } from 'react-router-dom'; // Updated for Vite
 
 const FacilityMap = () => {
