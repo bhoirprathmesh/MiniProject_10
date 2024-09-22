@@ -70,6 +70,7 @@ const ContactUs = () => {
       <div className="container py-5">
         <div className="text-center">
           <h2 className=" fw-bold" style={{ color: "#28a745" }}> - Contact Us - </h2>
+          <hr/>
           <p className="lead fw-bold">Have questions or inquiries? Get in touch with us!</p>
         </div>
 

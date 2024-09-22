@@ -46,7 +46,8 @@ const RecycleCenter = () => {
 
   return (
     <Container className="my-5">
-      <h2 className="text-center text-success fw-bold mb-4">Recycle Center</h2>
+      <h2 className="text-center text-success fw-bold mb-4"> - Recycle Center - </h2>
+      <hr/>
       <Row>
         {recycleItems.map((item, index) => (
           <Col md={4} className="mb-4" key={index}>

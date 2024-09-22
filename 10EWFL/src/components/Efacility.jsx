@@ -292,14 +292,17 @@ const FacilityMap = () => {
 
   return (
     <div className="container-fluid p-0">
+      <h2 className="mt-4 fw-bold text-center" style={{ color: "#28a745" }}> - E-waste Facility NearBy - </h2>
+      <hr />
       {clientLocation ? (
         <>
           {/* Map container */}
           <div
             ref={mapContainerRef}
-            className="w-100"
+            className="w-100 "
             style={{ height: '70vh'}} // Adjusted margin to avoid overlap with header
           />
+          <hr />
 
           {/* Facility Data container below the map */}
           <div className="container-fluid p-3" style={{ backgroundColor: 'rgba(255, 255, 255, 0.9)' }}>

@@ -80,6 +80,12 @@ function Header() {
               </NavLink>
             </li>
             <li className="nav-item">
+              <NavLink to="/store" className={({isActive}) => 
+                    `nav-link me-2 fs-5 a ${isActive ? "text-success fw-bold" : "text-body" }`
+                  }>Store
+              </NavLink>
+            </li>
+            <li className="nav-item">
               <NavLink to="/education" className={({isActive}) => 
                     `nav-link me-2 fs-5 a ${isActive ? "text-success fw-bold" : "text-body" }`
                   }>Education

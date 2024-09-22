@@ -16,6 +16,8 @@ import Refrigerator from './components/Refrigerator';
 import Others from './components/Others';
 import Rules from './components/Rules';
 import ContactUs from './components/ContactUs';
+import Education from './components/Education';
+import Store from './components/Store';
 
 function App() {
   return (
@@ -30,6 +32,8 @@ function App() {
           <Route path="/e-facilities" element={<FacilityMap />} />
           <Route path="/rules" element={<Rules />} />
           <Route path="/contactus" element={<ContactUs />} />
+          <Route path="/education" element={<Education />} />
+          <Route path="/store" element={<Store />} />
           
           
           {/* Route for Recycle Center */}

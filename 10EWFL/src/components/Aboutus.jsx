@@ -7,7 +7,8 @@ const AboutUs = () => {
     <section className="about-us py-5">
       <Container>
         <Row>
-          <h4 className="text-center text-success fw-bold">-About ESeva-</h4>
+          <h2 className="text-center text-success fw-bold">-About ESeva-</h2>
+          <hr/>
           <h2 className="text-center font-weight-bold">Revolutionizing E-Waste Locator and Management</h2>
           <Col md={6} className="d-flex align-items-center">
             <div>
