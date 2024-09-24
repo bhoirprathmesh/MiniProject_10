@@ -1,42 +1,49 @@
-import { useContext, useEffect, useState } from "react"
-import { BrowserRouter, Link, Outlet, Route, Routes, useNavigate,NavLink } from "react-router-dom"
-import {toast} from 'react-toastify';
+import { useNavigate, NavLink, Outlet } from "react-router-dom";
+import { toast } from "react-toastify";
 
 function Dashboard() {
+  const navigator = useNavigate();
 
-    const navigator = useNavigate();
-    const LogoutHandler = () => {
-      localStorage.removeItem('token');
-      setIsLoggedIn(false);
-      setUser(null);
-      navigator("/");
-      toast.success("Logout Success",{position:"top-right",autoClose: 2000});
-    }
-    
+  const LogoutHandler = () => {
+    localStorage.removeItem("token");
+    toast.success("Logout Success", { position: "top-right", autoClose: 2000 });
+    navigator("/");
+  };
 
   return (
-   
-    <div className=" mt-[12vh] h-[88vh] w-full bg-white ">
+    <div className="container-fluid">
+      <div className="row">
+        {/* Sidebar */}
+        <div className="col-md-3 col-lg-2 bg-light sidebar p-4">
+          <NavLink
+            to="/dashboard/"
+            className="nav-link mb-3 text-black fw-bold"
+          >
+            Profile
+          </NavLink>
+          <hr />
+          <NavLink
+            to="/dashboard/myAppointments"
+            className="nav-link mb-3 text-black fw-bold"
+          >
+            My Appointments
+          </NavLink>
+          <hr />
+          <button
+            className="btn btn-success mt-3 w-100 "
+            onClick={LogoutHandler}
+          >
+            Log out
+          </button>
+        </div>
 
-      <div className=" fixed w-[20%]  h-full bg-gray-300 border-r-2 border-black flex flex-col items-center  p-5 ">
-
-        <NavLink to={"/dashboard/"} className=" w-full p-2 bg-blue-300 hover:bg-blue-400 text-gray-800 font-semibold rounded-lg " >  Profile </NavLink> <br />
-        <NavLink to={"/dashboard/myAppointments"} className=" w-full p-2 bg-blue-300 hover:bg-blue-400 text-gray-800 font-semibold rounded-lg " >  My Appointments </NavLink> <br />
-        {/* <Link to={"/dashboard/myAppointments"} >  My Appointments </Link> <br /> */}
-        
-        <button className=" bg-red-500 w-[100px] p-2 text-white " onClick={LogoutHandler} > Log out </button>
-      {/* <Link to={"addEwaste"} > Add E-waste </Link> */}
-
+        {/* Main Content */}
+        <div className="col-md-9 col-lg-10 bg-white d-flex align-items-center justify-content-center min-vh-100">
+          <Outlet />
+        </div>
       </div>
-
-      <div className=" ml-[20%] w-[80%] min-h-[88vh] bg-white flex justify-center items-center   ">
-
-        <Outlet />
-        
-      </div>
-        
     </div>
-  )
+  );
 }
 
-export default Dashboard
+export default Dashboard;

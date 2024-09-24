@@ -1,3 +1,12 @@
+//header.css
+/* .d{
+  background-color: green !important;;
+} */
+/* .d:hover {
+  background-color: green;
+  color: #fff !important;
+} */
+
 .about-us h2 {
     font-weight: 700;
   }
@@ -462,3 +471,24 @@ body {
   padding: 10px 20px;
 }
 
+// dashboard.css
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animated {
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+
+.fadeIn {
+  animation-name: fadeIn;
+}
