@@ -17,16 +17,30 @@ function Dashboard() {
         <div className="col-md-3 col-lg-2 bg-light sidebar p-4">
           <NavLink
             to="/dashboard/"
-            className="nav-link mb-3 text-black fw-bold"
+            className={({isActive}) => `nav-link me-2 fs-5 ${isActive ? "text-success fw-bold" : "text-body" }`}
           >
             Profile
           </NavLink>
           <hr />
           <NavLink
             to="/dashboard/myAppointments"
-            className="nav-link mb-3 text-black fw-bold"
+            className={({isActive}) => `nav-link me-2 fs-5 ${isActive ? "text-success fw-bold" : "text-body" }`}
           >
-            My Appointments
+            Contribution
+          </NavLink>
+          <hr />
+          <NavLink
+            to="/dashboard/myAppointments"
+            className={({isActive}) => `nav-link me-2 fs-5 ${isActive ? "text-success fw-bold" : "text-body" }`}
+          >
+            Help
+          </NavLink>
+          <hr />
+          <NavLink
+            to="/dashboard/myAppointments"
+            className={({isActive}) => `nav-link me-2 fs-5 ${isActive ? "text-success fw-bold" : "text-body" }`}
+          >
+            Setting
           </NavLink>
           <hr />
           <button
