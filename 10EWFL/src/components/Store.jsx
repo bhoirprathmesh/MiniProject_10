@@ -26,7 +26,7 @@ function Store() {
   return (
     <Container className="my-5">
       <div className='mt-4'>
-        <h2 className="fw-bold text-center text-success">- E-waste Store -</h2>
+        <h2 className="fw-bold text-center text-success">- E-Waste Store -</h2>
         <hr />
 
         <Row>

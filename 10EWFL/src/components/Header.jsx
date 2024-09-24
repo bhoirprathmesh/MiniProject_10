@@ -103,6 +103,12 @@ function Header() {
                   }>Rules
               </NavLink>
             </li>
+            <li className="nav-item">
+              <NavLink to="/dashboard" className={({isActive}) => 
+                    `nav-link me-2 fs-5 a ${isActive ? "text-success fw-bold" : "text-body" }`
+                  }>Dashboard
+              </NavLink>
+            </li>
           </ul>
           <h5 className="font-montserrat font-bold text-xl ml-12 me-auto md:ml-4 md:text-2xl text-emerald-600 d-flex align-items-center gap-2 text-success">
             <FaMapMarkerAlt />

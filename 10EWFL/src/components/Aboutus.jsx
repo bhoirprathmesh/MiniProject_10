@@ -1,6 +1,7 @@
 import React from 'react';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import aboutlogo from '../assets/revolution-e-waste.webp';
+import Analytics from './Analytics';
 
 const AboutUs = () => {
   return (
@@ -30,6 +31,7 @@ const AboutUs = () => {
         </Row>
       </Container>
     </section>
+    
   );
 };
 

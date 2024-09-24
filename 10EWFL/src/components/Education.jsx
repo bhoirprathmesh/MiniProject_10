@@ -6,7 +6,7 @@ function Education() {
   return (
     <Container className="my-5">
         <div className='mt-4'>
-            <h2 className="fw-bold text-center text-success">- E-waste Education -</h2>
+            <h2 className="fw-bold text-center text-success">- E-Waste Education -</h2>
             <hr />
 
             {/* Video Section */}

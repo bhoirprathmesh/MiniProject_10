@@ -18,6 +18,9 @@ import Rules from './components/Rules';
 import ContactUs from './components/ContactUs';
 import Education from './components/Education';
 import Store from './components/Store';
+import Dashboard from './components/Dashboard';
+import Profile from './components/Profile';
+import Analytics from './components/Analytics';
 
 function App() {
   return (
@@ -46,6 +49,11 @@ function App() {
           <Route path="/recycle/television" element={<Television />} />
           <Route path="/recycle/refrigerator" element={<Refrigerator />} />
           <Route path="/recycle/others" element={<Others />} />
+
+          <Route path="/dashboard" element= {<Dashboard />} >
+            {/* <Route path="/dashboard/myAppointments" element={<MyAppointmentPage />} /> */}
+            <Route path="/dashboard/" element={<Profile />} />
+          </Route>
           
         </Routes>
         <Footer />

@@ -291,82 +291,84 @@ const FacilityMap = () => {
   }, [selectedFacility]);
 
   return (
-    <div className="container-fluid p-0">
-      <h2 className="mt-4 fw-bold text-center" style={{ color: "#28a745" }}> - E-waste Facility NearBy - </h2>
-      <hr />
-      {clientLocation ? (
-        <>
-          {/* Map container */}
-          <div
-            ref={mapContainerRef}
-            className="w-100 "
-            style={{ height: '70vh'}} // Adjusted margin to avoid overlap with header
-          />
-          <hr />
-
-          {/* Facility Data container below the map */}
-          <div className="container-fluid p-3" style={{ backgroundColor: 'rgba(255, 255, 255, 0.9)' }}>
+    <div className="container">
+      <div className='mt-4'>
+        <h2 className="fw-bold text-center text-success" > - E-waste Facility NearBy - </h2>
+        <hr />
+        {clientLocation ? (
+          <>
+            {/* Map container */}
             <div
-              ref={cardContainerRef}
-              className="d-flex overflow-auto"
-              style={{ whiteSpace: 'nowrap' }}
-            >
-              {facilityData.map((info, index) => (
-                <div
-                  key={index}
-                  className={`p-3 me-3 border rounded ${
-                    selectedFacility === index ? 'text-black' : 'bg-light'
-                  }`}
-                  style={{
-                    minWidth: '300px',
-                    maxWidth: '400px', // Set a max width for the cards
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'space-between',
-                    overflow: 'hidden', // Hide overflow content
-                  }}
-                  onClick={() => setSelectedFacility(index)}
-                >
-                  <div className="mb-3">
-                    <div className="d-flex justify-content-between mb-2">
-                      <h2 className="h5 text-truncate" style={{ maxWidth: '200px' }}>{info.name}</h2>
-                      {info.verified ? (
-                        <FaCheckCircle className="text-success" />
-                      ) : (
-                        <FaTimesCircle className="text-danger" />
-                      )}
+              ref={mapContainerRef}
+              className="w-100 "
+              style={{ height: '70vh'}} // Adjusted margin to avoid overlap with header
+            />
+            <hr />
+
+            {/* Facility Data container below the map */}
+            <div className="container p-3" style={{ backgroundColor: 'rgba(255, 255, 255, 0.9)' }}>
+              <div
+                ref={cardContainerRef}
+                className="d-flex overflow-auto"
+                style={{ whiteSpace: 'nowrap' }}
+              >
+                {facilityData.map((info, index) => (
+                  <div
+                    key={index}
+                    className={`p-3 me-3 border rounded ${
+                      selectedFacility === index ? 'text-black' : 'bg-light'
+                    }`}
+                    style={{
+                      minWidth: '400px',
+                      maxWidth: '500px', // Set a max width for the cards
+                      display: 'flex',
+                      flexDirection: 'column',
+                      justifyContent: 'space-between',
+                      overflow: 'hidden', // Hide overflow content
+                    }}
+                    onClick={() => setSelectedFacility(index)}
+                  >
+                    <div className="mb-3">
+                      <div className="d-flex justify-content-between mb-2">
+                        <h2 className="h5 text-truncate" style={{ maxWidth: '200px' }}>{info.name}</h2>
+                        {info.verified ? (
+                          <FaCheckCircle className="text-success" />
+                        ) : (
+                          <FaTimesCircle className="text-danger" />
+                        )}
+                      </div>
+                      <p className="text-truncate" style={{ maxWidth: '100%' }}>Capacity: {info.capacity}</p>
+                      <p style={{ maxWidth: '100%',  whiteSpace: 'normal' }}>{info.address}</p>
+                      <p className="text-truncate" style={{ maxWidth: '100%' }}>Contact: {info.contact}</p>
+                      <p className="text-truncate" style={{ maxWidth: '100%' }}>Time: {info.time}</p>
+                      <p className="text-truncate" style={{ maxWidth: '100%' }}>Distance: {info.distance.toFixed(2)} km away</p>
                     </div>
-                    <p className="text-truncate" style={{ maxWidth: '100%' }}>Capacity: {info.capacity}</p>
-                    <p style={{ maxWidth: '100%',  whiteSpace: 'normal' }}>{info.address}</p>
-                    <p className="text-truncate" style={{ maxWidth: '100%' }}>Contact: {info.contact}</p>
-                    <p className="text-truncate" style={{ maxWidth: '100%' }}>Time: {info.time}</p>
-                    <p className="text-truncate" style={{ maxWidth: '100%' }}>Distance: {info.distance.toFixed(2)} km away</p>
+                    <div className="d-flex justify-content-end mt-3">
+                      <button className="btn btn-success me-2 b w-100" id={`directionsBtn${index}`}>
+                        Get Directions
+                      </button>
+                      <Link to="/recycle" className="btn btn-success b w-100">
+                        Book Recycling
+                      </Link>
+                    </div>
                   </div>
-                  <div className="d-flex justify-content-end mt-3">
-                    <button className="btn btn-success me-2 b" id={`directionsBtn${index}`}>
-                      Get Directions
-                    </button>
-                    <Link to="/recycle" className="btn btn-success b">
-                      Book Recycling
-                    </Link>
-                  </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
+          </>
+        ) : (
+          <div className="d-flex flex-column align-items-center justify-content-center text-center py-5">
+            <h1 className="text-danger">Location access denied. Please enable location services.</h1>
+            <p className="text-secondary mt-3">Please allow the location permissions...</p>
+            <button
+              onClick={handleAllowLocationClick}
+              className="btn btn-success mt-4"
+            >
+              Allow Location
+            </button>
           </div>
-        </>
-      ) : (
-        <div className="d-flex flex-column align-items-center justify-content-center text-center py-5">
-          <h1 className="text-danger">Location access denied. Please enable location services.</h1>
-          <p className="text-secondary mt-3">Please allow the location permissions...</p>
-          <button
-            onClick={handleAllowLocationClick}
-            className="btn btn-success mt-4"
-          >
-            Allow Location
-          </button>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 };

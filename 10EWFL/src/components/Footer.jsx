@@ -3,7 +3,7 @@ import { FaMapMarkerAlt, FaPhone, FaEnvelope, FaLinkedin, FaInstagram, FaTwitter
 
 const Footer = () => {
   return (
-    <footer className="bg-light text-dark pt-5 pb-4 bg-lightgreen shadow bottom-shadow">
+    <footer className=" text-dark pt-5 pb-4 bg-lightgreen shadow ">
       <div className="container">
         <div className="row">
           {/* Left Section */}
