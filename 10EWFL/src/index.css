@@ -492,3 +492,110 @@ body {
 .fadeIn {
   animation-name: fadeIn;
 }
+
+.animated-sidebar {
+  animation: slideInLeft 0.5s ease-out;
+}
+
+@keyframes slideInLeft {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Smooth transitions for hovering over links */
+.nav-link {
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.nav-link:hover {
+  background-color: rgba(0, 128, 0, 0.1);
+  color: #28a745;
+}
+
+/* Button hover animation */
+.btn-success:hover {
+  background-color: #218838;
+  transform: scale(1.05);
+  transition: transform 0.2s ease;
+}
+
+/* Profile specific styles */
+.profile-card {
+  background: linear-gradient(135deg, #e0f7fa, #f0fff0);
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease-in-out;
+}
+
+.profile-card:hover {
+  transform: scale(1.02);
+}
+
+.profile-img {
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.profile-img:hover {
+  transform: scale(1.05);
+}
+
+.profile-details {
+  padding: 20px;
+  border-left: 3px solid #28a745;
+}
+
+.progress.green-points-progress {
+  height: 20px;
+  border-radius: 10px;
+  background-color: #e9ecef;
+}
+
+.progress-bar.bg-success {
+  background-color: #28a745;
+  transition: width 0.5s ease-in-out;
+}
+
+/* Profile edit button */
+.btn-outline-success {
+  border: 2px solid #28a745;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn-outline-success:hover {
+  background-color: #28a745;
+  color: #fff;
+}
+
+
+/* Impact Analysis Styles */
+.impact-box {
+  background-color: #e0ffe0;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.impact-box:hover {
+  background-color: #d7fcd7;
+}
+
+.progress {
+  background-color: #e9ecef;
+  border-radius: 20px;
+}
+
+.progress-bar {
+  transition: width 0.6s ease;
+}
+
+.text-success {
+  color: #28a745 !important;
+}
+
