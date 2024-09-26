@@ -11,13 +11,6 @@ function Dashboard() {
     navigator("/");
   };
 
-  const [tips, setTips] = useState([
-    "Reduce e-waste by donating or recycling old electronics.",
-    "Avoid improper disposal of batteries to prevent soil contamination.",
-    "Support companies that prioritize eco-friendly practices.",
-    "Participate in e-waste collection drives in your community."
-  ]);
-  const [currentTip, setCurrentTip] = useState(0);
 
   // Cycling through eco-friendly tips
   useEffect(() => {
