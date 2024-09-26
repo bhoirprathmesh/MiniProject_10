@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { FaMapMarkerAlt } from 'react-icons/fa';
+
 import { Link, NavLink } from 'react-router-dom'
 
 function Header() {
