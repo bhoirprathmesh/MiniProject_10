@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from 'react';
-
+import { FaMapMarkerAlt } from 'react-icons/fa'; 
 import { Link, NavLink } from 'react-router-dom'
+import { useAuth } from '../store/auth';
 
 function Header() {
+
+  const { isLoggedIn } = useAuth();
+
   const [locations, setLocation] = useState('');
 
   useEffect(() => {
@@ -103,20 +107,28 @@ function Header() {
                   }>Rules
               </NavLink>
             </li>
-            <li className="nav-item">
-              <NavLink to="/dashboard" className={({isActive}) => 
-                    `nav-link me-2 fs-5 a ${isActive ? "text-success fw-bold" : "text-body" }`
-                  }>Dashboard
-              </NavLink>
-            </li>
           </ul>
           <h5 className="font-montserrat font-bold text-xl ml-12 me-auto md:ml-4 md:text-2xl text-emerald-600 d-flex align-items-center gap-2 text-success">
             <FaMapMarkerAlt />
             {locations || 'Loading...'}
           </h5>
+          
           <div className="d-flex">
-            <Link to="/SignIn" className="btn btn-outline-dark shadow-none me-lg-3 me-2 text-success b fw-bold">SIGNIN</Link>
-          </div>
+          {isLoggedIn ? (
+            <>
+              <NavLink to="/dashboard" className={({ isActive }) => 
+                `btn b btn-outline-dark shadow-none me-2 fs-5 ${isActive ? "text-success fw-bold" : "text-body"}`}>
+                Dashboard
+              </NavLink>
+            </>
+          ) : (
+            <>
+              <div className="d-flex">
+                <Link to="/register" className="btn btn-outline-dark shadow-none me-lg-3 me-2 text-success b fw-bold">SIGNIN</Link>
+              </div>
+            </>
+          )}
+        </div>
         </div>
       </div>
     </nav>

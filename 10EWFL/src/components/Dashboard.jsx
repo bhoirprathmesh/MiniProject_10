@@ -11,6 +11,13 @@ function Dashboard() {
     navigator("/");
   };
 
+  const [tips, setTips] = useState([
+    "Reduce e-waste by donating or recycling old electronics.",
+    "Avoid improper disposal of batteries to prevent soil contamination.",
+    "Support companies that prioritize eco-friendly practices.",
+    "Participate in e-waste collection drives in your community."
+  ]);
+  const [currentTip, setCurrentTip] = useState(0);
 
   // Cycling through eco-friendly tips
   useEffect(() => {
@@ -27,6 +34,7 @@ function Dashboard() {
         <div className="col-md-3 col-lg-2 bg-light sidebar p-4 animated-sidebar">
           <NavLink
             to="/dashboard/"
+            end
             className={({ isActive }) => `nav-link me-2 fs-5 ${isActive ? "text-success fw-bold" : "text-body"}`}
           >
             Profile
@@ -71,7 +79,6 @@ function Dashboard() {
         {/* Main Content */}
         <div className="col-md-9 col-lg-10 bg-white d-flex flex-column align-items-center justify-content-center min-vh-100">
           <Outlet />
-
         </div>
       </div>
     </div>

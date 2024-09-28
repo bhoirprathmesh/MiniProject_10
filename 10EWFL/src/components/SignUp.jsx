@@ -1,26 +1,56 @@
 import React, { useState } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
+import { useAuth } from '../store/auth';
+import { toast } from 'react-toastify';
 
 const RegistrationForm = () => {
   const [formData, setFormData] = useState({
     username: '',
-    phoneNumber: '',
-    email: '',
     fullName: '',
+    email: '',
+    phoneNumber: '',
     password: '',
-    confirmPassword: '',
-    showPassword: false,
   });
+
+  const navigate = useNavigate();
+  const { storeTokenInLS } = useAuth();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission logic here
+    console.log(formData);
+    try {
+      const response = await fetch(`http://localhost:4000/auth/register`, {
+        method: "POST",
+        headers: { 
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(formData),
+      });
+
+      // console.log(response);
+      const res_data = await response.json();
+      console.log("Response from server", res_data.extraDetails);
+      
+      if(response.ok){
+        //stored the token in the localstoreage
+        storeTokenInLS(res_data.token);
+        // localStorage.setItem("token", res_data.token);  -->we cant you it because we need to use each and every time for that we to create the functions
+        setFormData({ username: "", fullname: "", email: "", phone: "", password: "" });
+        navigate("/login");
+        toast.success("Registration Successful !");
+      } else {
+        toast.error(res_data.extraDetails ? res_data.extraDetails : res_data.message);
+      }
+
+    }catch (error) {
+      console.log("register", error);
+    }
   };
 
   return (
@@ -42,12 +72,12 @@ const RegistrationForm = () => {
             />
           </div>
           <div className="mb-3">
-          <label>Phone Number</label>
+          <label>Full Name</label>
             <input
               type="text"
-              name="phoneNumber"
-              placeholder="Phone Number"
-              value={formData.phoneNumber}
+              name="fullname"
+              placeholder="Full Name"
+              value={formData.fullname}
               onChange={handleChange}
               className="form-control"
               required
@@ -66,12 +96,12 @@ const RegistrationForm = () => {
             />
           </div>
           <div className="mb-3">
-          <label>Full Name</label>
+          <label>Phone Number</label>
             <input
               type="text"
-              name="fullName"
-              placeholder="Full Name"
-              value={formData.fullName}
+              name="phone"
+              placeholder="Phone Number"
+              value={formData.phone}
               onChange={handleChange}
               className="form-control"
               required
@@ -89,7 +119,7 @@ const RegistrationForm = () => {
               required
             />
           </div>
-          <div className="mb-3">
+          {/* <div className="mb-3">
           <label>Confirm Password</label>
             <input
               type={formData.showPassword ? 'text' : 'password'}
@@ -112,12 +142,12 @@ const RegistrationForm = () => {
             <label className="form-check-label text-muted">
               Show Password
             </label>
-          </div>
-          <button type="submit" className="btn w-100 fw-bold b btn-success " style={{ backgroundColor: '#28a745', color: 'white' }}>
+          </div> */}
+          <button type="submit" className="btn w-100 fw-bold b btn-success ">
             Sign Up
           </button>
           <p className="text-center text-muted mt-3">
-            Already have an account? <Link to="/SignIn" style={{ color: '#28a745' }}>Sign in</Link>
+            Already have an account? <Link to="/login" style={{ color: '#28a745' }}>Sign in</Link>
           </p>
         </form>
       </div>

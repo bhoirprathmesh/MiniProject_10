@@ -519,11 +519,11 @@ body {
 }
 
 /* Button hover animation */
-.btn-success:hover {
+/* .btn-success:hover {
   background-color: #218838;
   transform: scale(1.05);
   transition: transform 0.2s ease;
-}
+} */
 
 /* Profile specific styles */
 .profile-card {
@@ -597,5 +597,83 @@ body {
 
 .text-success {
   color: #28a745 !important;
+}
+
+/* Error  */
+#error-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f8f9fa;
+}
+
+#error-page .content {
+  text-align: center;
+  background-color: white;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  animation: fadeInDown 1s ease-in-out;
+}
+
+.header {
+  font-size: 5rem;
+  font-weight: 700;
+  color: #28a745;
+  margin-bottom: 20px;
+  animation: pulse 1.5s infinite;
+}
+
+h4 {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.btns a {
+  display: inline-block;
+  padding: 12px 30px;
+  margin: 10px;
+  background-color: #28a745;
+  color: white;
+  text-transform: uppercase;
+  font-weight: bold;
+  border-radius: 50px;
+  transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.btns a:hover {
+  background-color: white;
+  color: #28a745;
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
 }
 

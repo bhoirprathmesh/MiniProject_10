@@ -20,7 +20,9 @@ import Education from './components/Education';
 import Store from './components/Store';
 import Dashboard from './components/Dashboard';
 import Profile from './components/Profile';
-import Analytics from './components/Analytics';
+import Logout from './components/Logout';
+import Error from './components/Error';
+import MyAppointmentPage from './components/MyAppointmentPage';
 
 function App() {
   return (
@@ -29,14 +31,16 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/SignIn" element={<Login />} />
-          <Route path="/SignUp" element={<RegistrationForm />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<RegistrationForm />} />
           <Route path="/aboutus" element={<AboutUs />} />
           <Route path="/e-facilities" element={<FacilityMap />} />
           <Route path="/rules" element={<Rules />} />
           <Route path="/contactus" element={<ContactUs />} />
           <Route path="/education" element={<Education />} />
           <Route path="/store" element={<Store />} />
+          <Route path="/logout" element={ <Logout /> }/>
+          <Route path="*" element={<Error />} />
           
           
           {/* Route for Recycle Center */}
@@ -51,7 +55,7 @@ function App() {
           <Route path="/recycle/others" element={<Others />} />
 
           <Route path="/dashboard" element= {<Dashboard />} >
-            {/* <Route path="/dashboard/myAppointments" element={<MyAppointmentPage />} /> */}
+            <Route path="/dashboard/myAppointments" element={<MyAppointmentPage />} />
             <Route path="/dashboard/" element={<Profile />} />
           </Route>
           

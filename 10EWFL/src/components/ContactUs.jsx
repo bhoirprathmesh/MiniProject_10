@@ -3,20 +3,38 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import pickuplogo from '../assets/Schedule-pickup.png';
 import { FaMapMarkerAlt, FaPhone, FaEnvelope, FaLinkedin, FaInstagram, FaTwitter, FaWhatsapp } from 'react-icons/fa';
-// import emailjs from "emailjs-com";
-import { Link } from "react-router-dom"; // Use React Router for navigation
+import emailjs from "emailjs-com";
+import { useAuth } from '../store/auth';
 
 const ContactUs = () => {
-  const [formData, setFormData] = useState({
-    name: "",
+
+  const defaultContactFormData = {
+    username: "",
     email: "",
     phone: "",
     message: "",
-  });
+  };
+
+  const [contact, setContact] = useState(defaultContactFormData);
+
+  const [ userData, setUSerData ] = useState(true);
+
+  const { user } = useAuth();
+
+  if(userData && user){
+    setContact({
+      username: user.username,
+      email: user.email,
+      phone: user.phone,
+      message: "",
+    })
+
+    setUSerData(false);
+  }
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prevData) => ({
+    setContact((prevData) => ({
       ...prevData,
       [name]: value,
     }));
@@ -24,22 +42,17 @@ const ContactUs = () => {
 
   const sendMsg = (e) => {
     e.preventDefault();
-    const templateParams = {
-      name: formData.name,
-      email: formData.email,
-      phone: formData.phone,
-      message: formData.message,
-    };
+    const templateParams = { ...contact };
 
     emailjs
       .send(
-        "service_jqn5flv",
-        "template_cnom5kj",
+        import.meta.env.REACT_APP_EMAIL_SERVICE,
+        import.meta.env.REACT_APP_EMAIL_TEMPLATE,
         templateParams,
-        "ddYcz13MvW01UFF5u"
+        import.meta.env.REACT_APP_EMAIL_USER_ID
       )
       .then((result) => {
-        setFormData({
+        setContact({
           name: "",
           email: "",
           phone: "",
@@ -54,19 +67,6 @@ const ContactUs = () => {
 
   return (
     <>
-      <ToastContainer
-        position="top-right"
-        autoClose={3000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="dark"
-      />
-
       <div className="container py-5">
         <div className="text-center">
           <h2 className=" fw-bold" style={{ color: "#28a745" }}> - Contact Us - </h2>
@@ -95,10 +95,10 @@ const ContactUs = () => {
                   <input
                     type="text"
                     id="name"
-                    name="name"
+                    name="username"
                     placeholder="Username"
                     className="form-control"
-                    value={formData.name}
+                    value={contact.username}
                     onChange={handleInputChange}
                     required
                   />
@@ -111,7 +111,7 @@ const ContactUs = () => {
                     name="email"
                     placeholder="Email"
                     className="form-control"
-                    value={formData.email}
+                    value={contact.email}
                     onChange={handleInputChange}
                     required
                   />
@@ -124,7 +124,7 @@ const ContactUs = () => {
                     name="phone"
                     placeholder="Phone Number"
                     className="form-control"
-                    value={formData.phone}
+                    value={contact.phone}
                     onChange={handleInputChange}
                     required
                   />
@@ -137,7 +137,7 @@ const ContactUs = () => {
                     placeholder="Enter Your Message..."
                     rows={4}
                     className="form-control"
-                    value={formData.message}
+                    value={contact.message}
                     onChange={handleInputChange}
                     required
                   ></textarea>

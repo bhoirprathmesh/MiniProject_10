@@ -5,20 +5,41 @@ import aboutlogo from '../assets/revolution-e-waste.webp';
 import Analytics from './Analytics';
 import "react-toastify/dist/ReactToastify.css";
 import { FaMapMarkerAlt, FaPhone, FaEnvelope, FaLinkedin, FaInstagram, FaTwitter, FaWhatsapp } from 'react-icons/fa';
+import emailjs from "emailjs-com";
+import { useAuth } from '../store/auth';
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Home = () => {
 
   // Contact
-  const [formData, setFormData] = useState({
-    name: "",
+  const defaultContactFormData = {
+    username: "",
     email: "",
     phone: "",
     message: "",
-  });
+  };
+
+  const [contact, setContact] = useState(defaultContactFormData);
+
+  const [ userData, setUSerData ] = useState(true);
+
+  const { user } = useAuth();
+
+  if(userData && user){
+    setContact({
+      username: user.username,
+      email: user.email,
+      phone: user.phone,
+      message: "",
+    })
+
+    setUSerData(false);
+  }
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prevData) => ({
+    setContact((prevData) => ({
       ...prevData,
       [name]: value,
     }));
@@ -26,22 +47,17 @@ const Home = () => {
 
   const sendMsg = (e) => {
     e.preventDefault();
-    const templateParams = {
-      name: formData.name,
-      email: formData.email,
-      phone: formData.phone,
-      message: formData.message,
-    };
+    const templateParams = { ...contact };
 
     emailjs
       .send(
-        "service_jqn5flv",
-        "template_cnom5kj",
+        import.meta.env.REACT_APP_EMAIL_SERVICE,
+        import.meta.env.REACT_APP_EMAIL_TEMPLATE,
         templateParams,
-        "ddYcz13MvW01UFF5u"
+        import.meta.env.REACT_APP_EMAIL_USER_ID
       )
       .then((result) => {
-        setFormData({
+        setContact({
           name: "",
           email: "",
           phone: "",
@@ -204,10 +220,10 @@ const Home = () => {
                     <input
                       type="text"
                       id="name"
-                      name="name"
+                      name="username"
                       placeholder="Username"
                       className="form-control"
-                      value={formData.name}
+                      value={contact.username}
                       onChange={handleInputChange}
                       required
                     />
@@ -220,7 +236,7 @@ const Home = () => {
                       name="email"
                       placeholder="Email"
                       className="form-control"
-                      value={formData.email}
+                      value={contact.email}
                       onChange={handleInputChange}
                       required
                     />
@@ -233,7 +249,7 @@ const Home = () => {
                       name="phone"
                       placeholder="Phone Number"
                       className="form-control"
-                      value={formData.phone}
+                      value={contact.phone}
                       onChange={handleInputChange}
                       required
                     />
@@ -246,7 +262,7 @@ const Home = () => {
                       placeholder="Enter Your Message..."
                       rows={4}
                       className="form-control"
-                      value={formData.message}
+                      value={contact.message}
                       onChange={handleInputChange}
                       required
                     ></textarea>

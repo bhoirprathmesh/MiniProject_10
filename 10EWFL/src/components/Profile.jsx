@@ -6,7 +6,7 @@ function Profile() {
   const [profileData, setProfileData] = useState({
     email: "abc@gmail.com",
     Name: "ABCD",
-    greenPoints: 0,
+    greenPoints: 50,
     role: "Normal",
     totalCO2Saved: 0, // Total CO2 saved by user
     totalRecycled: 2,  // Total recycled items count
@@ -61,10 +61,11 @@ function Profile() {
             </div>
           </div>
         </div>  
-        <hr />
+      </div>
 
+      <div className="mt-4 mb-4 card shadow-lg p-4 rounded-lg bg-light w-75 animated fadeIn">
         {/* Impact Analysis Section */}
-        <div className="row mt-5">
+        <div className="row">
           <div className="col-12">
             <h4 className="text-success fw-bold">Analysis</h4>
             <p className="text-muted">Here's how your recycling efforts have contributed to the environment:</p>
@@ -112,3 +113,5 @@ function Profile() {
 }
 
 export default Profile;
+
+
