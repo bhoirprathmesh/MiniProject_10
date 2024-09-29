@@ -24,6 +24,7 @@ function MyAppointmentPage() {
     return (
         <div>
             <p className="text-danger font-montserrat fw-bold">No Appointment Data Found</p>
+            <p className="text-danger font-montserrat fw-bold">Please Recylce Any Product..</p>
         </div>
     );
 }
