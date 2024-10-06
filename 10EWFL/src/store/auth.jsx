@@ -7,6 +7,7 @@ export const AuthProvider = ({children}) => {
 
     const [token, setToken] = useState(localStorage.getItem("token"));
     const [user, setUSer] = useState("");
+    const [facilityuse, setFacilityUSe] = useState("");
 
     const storeTokenInLS = (serverToken) => {
         setToken(serverToken);  //this is to remove continuous refreshment after login btn
@@ -42,12 +43,30 @@ export const AuthProvider = ({children}) => {
         }
     }
 
+    // to fetch the facility from the database
+    const getFacility = async () => {
+        try {
+            const response = await fetch('http://localhost:4000/data/facility',{
+                method: 'GET',
+            });
+
+            if(response.ok) {
+                const data = await response.json();
+                console.log(data.msg);
+                setFacilityUSe(data.msg);
+            }
+        } catch(error) {
+            console.log(`facility frontened error : ${error}`);
+        }
+    }
+
     useEffect( () => {
+        getFacility();
         userAuthentication()
     }, []);
 
     return (
-        <AuthContext.Provider value={{ isLoggedIn, storeTokenInLS, LogoutUser, user }} >
+        <AuthContext.Provider value={{ isLoggedIn, storeTokenInLS, LogoutUser, user, facilityuse }} >
             {children} 
         </AuthContext.Provider>
     );
