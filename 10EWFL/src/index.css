@@ -148,6 +148,28 @@ body {
   transform: scale(1.05); /* Slight scale up on hover */
 }
 
+.btn-success {
+  background-color: #28a745;
+  border: none;
+  transition: background-color 0.3s ease-in-out, transform 0.2s ease;
+}
+
+.btn-danger:hover {
+  background-color: white;
+  border: 1px solid red;
+  color: red !important;
+  font-weight: bold !important;
+  transform: scale(1.05); /* Slight scale up on hover */
+}
+
+.btn-primary:hover {
+  background-color: white;
+  border: 1px solid blue;
+  color: blue !important;
+  font-weight: bold !important;
+  transform: scale(1.05); /* Slight scale up on hover */
+}
+
 .b {
   padding: 12px 20px;
   border-radius: 30px;

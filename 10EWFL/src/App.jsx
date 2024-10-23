@@ -23,6 +23,9 @@ import Profile from './components/Profile';
 import Logout from './components/Logout';
 import Error from './components/Error';
 import MyAppointmentPage from './components/MyAppointmentPage';
+import Help from './components/Help';
+import Setting from './components/Setting';
+import Contributions from './components/Contributions';
 
 function App() {
   return (
@@ -56,6 +59,9 @@ function App() {
 
           <Route path="/dashboard" element= {<Dashboard />} >
             <Route path="/dashboard/myAppointments" element={<MyAppointmentPage />} />
+            <Route path="/dashboard/Help" element={<Help />} />
+            <Route path="/dashboard/settings" element={<Setting />} />
+            <Route path="/dashboard/contributions" element={<Contributions />} />
             <Route path="/dashboard/" element={<Profile />} />
           </Route>
           

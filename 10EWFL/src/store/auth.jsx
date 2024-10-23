@@ -8,6 +8,7 @@ export const AuthProvider = ({children}) => {
     const [token, setToken] = useState(localStorage.getItem("token"));
     const [user, setUSer] = useState("");
     const [facilityuse, setFacilityUSe] = useState("");
+    const [myappointment, setMyAppointment] = useState("");
 
     const storeTokenInLS = (serverToken) => {
         setToken(serverToken);  //this is to remove continuous refreshment after login btn
@@ -60,13 +61,30 @@ export const AuthProvider = ({children}) => {
         }
     }
 
+    const getAppointment = async () => {
+        try{
+            const response = await fetch('http://localhost:4000/data/booking_data', {
+                method: 'GET',
+            });
+
+            if(response.ok) {
+                const data = await response.json();
+                console.log("Fetched appointment data:", data.bookings); // Log for debugging
+                setMyAppointment(data.bookings);
+            }
+        }catch(error) {
+            console.log(`Appointment frontned error : ${error}`);
+        }
+    }
+
     useEffect( () => {
+        getAppointment();
         getFacility();
         userAuthentication()
     }, []);
 
     return (
-        <AuthContext.Provider value={{ isLoggedIn, storeTokenInLS, LogoutUser, user, facilityuse }} >
+        <AuthContext.Provider value={{ isLoggedIn, storeTokenInLS, LogoutUser, user, facilityuse, myappointment }} >
             {children} 
         </AuthContext.Provider>
     );

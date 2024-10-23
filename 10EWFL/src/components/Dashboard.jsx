@@ -1,9 +1,11 @@
 import { useNavigate, NavLink, Outlet } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useState, useEffect } from "react";
+import { useAuth } from '../store/auth';
 
 function Dashboard() {
   const navigator = useNavigate();
+  const { user } = useAuth();
 
   const LogoutHandler = () => {
     localStorage.removeItem("token");
