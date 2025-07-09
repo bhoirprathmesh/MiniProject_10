@@ -27,6 +27,11 @@ import Help from './components/Help';
 import Setting from './components/Setting';
 import Contributions from './components/Contributions';
 
+import RecycledElectronics from './components/RecycledElectronics';
+import RecyclingKits from './components/RecyclingKits';
+import Checkout from './components/Checkout';
+import TrackOrder from './components/TrackOrder';
+
 function App() {
   return (
     <div className="App">
@@ -64,6 +69,11 @@ function App() {
             <Route path="/dashboard/contributions" element={<Contributions />} />
             <Route path="/dashboard/" element={<Profile />} />
           </Route>
+
+          <Route path="/store/recycled-electronics" element={<RecycledElectronics />} />
+          <Route path="/store/recycling-kits" element={<RecyclingKits />} />
+          <Route path="/checkout" element={<Checkout />}/>
+          <Route path="/track-order" component={TrackOrder} />
           
         </Routes>
         <Footer />

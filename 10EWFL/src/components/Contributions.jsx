@@ -35,7 +35,7 @@ function Contributions() {
           }
 
           // Assuming booking has a weight field for the amount of waste recycled in kg
-          totalWasteRecycled += booking.wasteRecycled || 0; 
+          totalWasteRecycled += booking.wasteRecycled || 0;
         });
 
         const labels = Object.keys(monthlyRecycled); // Sorted months
@@ -53,25 +53,28 @@ function Contributions() {
           }],
         });
 
-        // Calculate total CO2 saved using the waste recycled data
-        const totalCO2Saved = calculateCO2Saved(totalWasteRecycled);
+        // Fetch total CO2 saved using the totalWasteRecycled
+        const co2Response = await fetch('http://127.0.0.1:5000/calculate_co2', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ total_waste_recycled: totalWasteRecycled }),
+        });
+
+        const co2Data = await co2Response.json();
 
         // Update profile with total recycled items and other data
         setRecycleData({
           totalItemsRecycled: bookings.length,
-          totalCO2Saved,
-          totalWasteRecycled,
+          totalCO2Saved: co2Data.total_co2_saved,
+          totalWasteRecycled: co2Data.total_waste_recycled,
         });
 
       }
     } catch (error) {
       console.error('Error fetching booking data:', error);
     }
-  };
-
-  const calculateCO2Saved = (wasteRecycled) => {
-    // Simple formula: 1 kg of e-waste recycled saves approx. 1.42 kg of CO2
-    return (wasteRecycled * 1.42).toFixed(2);
   };
 
   useEffect(() => {
@@ -124,23 +127,32 @@ function Contributions() {
           </div>
         </div>
 
-        {/* Waste Recycled */}
+        {/* Total Waste Recycled */}
         <div className="impact-box bg-lightgreen p-3 rounded shadow-sm">
-          <h5 className="fw-bold">Total E-Waste Recycled</h5>
+          <h5 className="fw-bold">Total Waste Recycled</h5>
           <p className="text-muted">You've recycled:</p>
-          <h2 className="text-success">{recycleData.totalWasteRecycled} kg</h2>
+          <h2 className="text-success">{recycleData.totalWasteRecycled} kg of waste</h2>
           <div className="progress">
             <div
               className="progress-bar bg-success"
               role="progressbar"
-              style={{ width: `${(recycleData.totalWasteRecycled / 50) * 100}%` }} // Assuming a max of 50 kg
+              style={{ width: `${(recycleData.totalWasteRecycled / 100) * 100}%` }} // Assuming a max of 100 kg waste
               aria-valuenow={recycleData.totalWasteRecycled}
               aria-valuemin="0"
-              aria-valuemax="50"
+              aria-valuemax="100"
             >
               {recycleData.totalWasteRecycled} kg
             </div>
           </div>
+        </div>
+      </div>
+
+      {/* Recycled items over time graph */}
+      <div className="card shadow-lg p-4 bg-light animated fadeIn">
+        <h4 className="fw-bold">Recycling History</h4>
+        <p className="text-muted">Monthly data of items you have recycled:</p>
+        <div>
+          {/* Graph component here (e.g., using Chart.js or other library) */}
         </div>
       </div>
     </div>

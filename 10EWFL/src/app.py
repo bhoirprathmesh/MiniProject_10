@@ -5,10 +5,10 @@ from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
 from flask_cors import CORS
 
-app = Flask(__name__)  # Corrected from _name to _name_
+app = Flask(__name__)
 CORS(app)  # Enable CORS for all routes
 
-# Updated data for models and their launch dates
+# Data for phone models with weights and initial prices
 model_data = {
     "brand": ["Samsung", "Samsung", "Samsung", "Samsung", "Samsung",
               "Apple", "Apple", "Apple", "Apple", "Apple",
@@ -48,12 +48,28 @@ model_data = {
                       29999, 24999, 34999, 19999, 15999,
                       19999, 24999, 16999, 10999, 19999,
                       18999, 15999, 12999, 14999, 11999,
-                      19999, 14999, 17999, 17999, 14999]
+                      19999, 14999, 17999, 17999, 14999],
+    
+    "weight": [0.169, 0.163, 0.208, 0.189, 0.196,  # Samsung weights (in kg)
+               0.173, 0.164, 0.148, 0.194, 0.194,  # Apple weights
+               0.179, 0.196, 0.225, 0.196, 0.216,  # Xiaomi weights
+               0.197, 0.193, 0.188, 0.184, 0.180,  # OnePlus weights
+               0.176, 0.194, 0.196, 0.196, 0.180,  # Realme weights
+               0.176, 0.170, 0.179, 0.186, 0.192,  # Vivo weights
+               0.173, 0.175, 0.190, 0.186, 0.193,  # OPPO weights
+               0.180, 0.178, 0.227, 0.195, 0.180,  # Nokia weights
+               0.225, 0.225, 0.207, 0.221, 0.200]  # Motorola weights
 }
 
 # Convert data into a DataFrame
 df = pd.DataFrame(model_data)
 df['launch_date'] = pd.to_datetime(df['launch_date'])
+
+# Function to calculate the CO2 saved based on weight
+def calculate_co2_saved(weight):
+    # Assuming 1 kg of e-waste recycled saves 1.42 kg of CO2
+    co2_saved = weight * 1.42
+    return round(co2_saved, 2)
 
 # Function to train the model
 def train_model():
@@ -88,5 +104,19 @@ def predict_price():
     predicted_price = model.predict([[days_since_launch]])
     return jsonify({"predicted_price": round(predicted_price[0], 2)})
 
-if __name__ == '__main__':  # Corrected from _name to _name_
+# API route to calculate the CO2 saved for recycled items
+@app.route('/calculate_co2', methods=['POST'])
+def calculate_co2():
+    data = request.json
+    total_waste_recycled = data.get('total_waste_recycled', 0)  # Total waste recycled in kg
+
+    # Calculate total CO2 saved
+    total_co2_saved = calculate_co2_saved(total_waste_recycled)
+
+    return jsonify({
+        "total_waste_recycled": total_waste_recycled,
+        "total_co2_saved": total_co2_saved
+    })
+
+if __name__ == '__main__':
     app.run(debug=True)

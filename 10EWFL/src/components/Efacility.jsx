@@ -91,7 +91,7 @@ const FacilityMap = () => {
       });
 
       map.addControl(geocoder);
-
+3
       geocoder.on('result', (event) => {
         const { geometry, place_name } = event.result;
 
@@ -190,72 +190,6 @@ const FacilityMap = () => {
       };
     }
   }, [clientLocation, selectedFacility]);
-
-  // const getDirections = async (origin, destination) => {
-  //   try {
-  //     const response = await fetch(
-  //       `https://api.mapbox.com/directions/v5/mapbox/walking/${origin[0]},${origin[1]};${destination[0]},${destination[1]}?alternatives=true&continue_straight=true&geometries=geojson&language=en&overview=full&steps=true&access_token=${mapboxgl.accessToken}`
-  //     );
-
-  //     const data = await response.json();
-
-  //     if (data.code === 'Ok' && mapRef.current) {
-  //       const distanceInKm = data.routes[0].distance / 1000;
-
-  //       const directionsLayerId = 'directions';
-  //       if (mapRef.current.getLayer(directionsLayerId)) {
-  //         mapRef.current.removeLayer(directionsLayerId);
-  //         mapRef.current.removeSource(directionsLayerId);
-  //       }
-
-  //       mapRef.current.addSource(directionsLayerId, {
-  //         type: 'geojson',
-  //         data: {
-  //           type: 'Feature',
-  //           properties: {},
-  //           geometry: data.routes[0].geometry,
-  //         },
-  //       });
-
-  //       mapRef.current.addLayer({
-  //         id: directionsLayerId,
-  //         type: 'line',
-  //         source: directionsLayerId,
-  //         layout: {
-  //           'line-join': 'round',
-  //           'line-cap': 'round',
-  //         },
-  //         paint: {
-  //           'line-color': '#3887be',
-  //           'line-width': 5,
-  //           'line-opacity': 0.75,
-  //         },
-  //       });
-
-  //       const bounds = new mapboxgl.LngLatBounds();
-  //       data.routes[0].geometry.coordinates.forEach((coord) =>
-  //         bounds.extend(coord)
-  //       );
-  //       mapRef.current.fitBounds(bounds, { padding: 20 });
-
-  //       const routePopup = new mapboxgl.Popup({
-  //         closeButton: false,
-  //         closeOnClick: false,
-  //         offset: 25,
-  //         className: 'h-8',
-  //       })
-  //         .setLngLat(data.routes[0].geometry.coordinates[0])
-  //         .setHTML(
-  //           `<p class="text-lg">Distance to Nearest Facility: ${distanceInKm.toFixed(
-  //             2
-  //           )} km</p>`
-  //         )
-  //         .addTo(mapRef.current);
-  //     }
-  //   } catch (error) {
-  //     console.error('Error fetching directions:', error);
-  //   }
-  // };
 
   useEffect(() => {
     if (
