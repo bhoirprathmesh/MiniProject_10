@@ -55,13 +55,13 @@ The platform is built using the **MERN Stack**, **Google Maps API**, and **Email
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/your-username/e-waste-facility-locator.git
-cd e-waste-facility-locator
+git clone https://github.com/bhoirprathmesh/MiniProject_10.git
+cd MiniProject_10
 ```
 
 ### 2. Install Frontend Dependencies
 ```bash
-cd client
+cd 10ewfl
 npm install
 ```
 
@@ -82,7 +82,7 @@ GOOGLE_MAPS_API_KEY=your_google_maps_api_key
 ### 5. Start the Development Server
 Frontend:
 ```bash
-cd client
+cd 10ewfl
 npm run dev
 ```
 
