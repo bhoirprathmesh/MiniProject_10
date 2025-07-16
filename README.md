@@ -99,23 +99,23 @@ http://localhost:5173
 ### ✅ To Screenshot & How it Work:
 ## 📸 Screenshots
 
+### WorkFlow [Flowchart] 
+![Flowchart](screenshot/ewfl.png)
+
 ### Landing Page  
-![Landing Page](screenshot/s1.png)
+![Landing](screenshot/ss1.png)
 
-### Prediction  
-![Prediction](screenshot/s2.png)
+### Map Integrated
+![Map](screenshot/ss2.png)
 
-### Predicited Single User  
-![Predicited](screenshot/s3.png)
+### Services
+![Services](screenshot/ss3.png)
 
-### Prediction Mutiple user 
-![Prediction](screenshot/s4.png)
+### Booking page
+![Booking](screenshot/ss4.png)
 
-### Predicted Multiple user
-![Predicted](screenshot/s5.png)
-
-### Analysis 
-![Analysis](screenshot/s6.png)
+### Profile 
+![Profile](screenshot/ss5.png)
 
 ---
 
