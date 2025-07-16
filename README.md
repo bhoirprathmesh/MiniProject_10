@@ -95,3 +95,30 @@ npm run dev
 ### 6. View the Application
 Open your browser at:
 http://localhost:5173
+
+### ✅ To Screenshot & How it Work:
+## 📸 Screenshots
+
+### Landing Page  
+![Landing Page](screenshot/s1.png)
+
+### Prediction  
+![Prediction](screenshot/s2.png)
+
+### Predicited Single User  
+![Predicited](screenshot/s3.png)
+
+### Prediction Mutiple user 
+![Prediction](screenshot/s4.png)
+
+### Predicted Multiple user
+![Predicted](screenshot/s5.png)
+
+### Analysis 
+![Analysis](screenshot/s6.png)
+
+---
+
+## 🎥 Demo
+
+![Demo](screenshot/video1.mp4)
