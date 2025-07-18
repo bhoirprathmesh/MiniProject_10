@@ -101,29 +101,10 @@ http://localhost:5173
 ### 👀Preview Live :
 https://miniproject-10-frontend.onrender.com
 
-### ✅ To Screenshot & How it Work:
-## 📸 Screenshots
+---
+
+### ✅ How it Work:
 
 ### WorkFlow [Flowchart] 
 ![Flowchart](screenshot/ewfl.png)
 
-### Landing Page  
-![Landing](screenshot/ss1.png)
-
-### Map Integrated
-![Map](screenshot/ss2.png)
-
-### Services
-![Services](screenshot/ss3.png)
-
-### Booking page
-![Booking](screenshot/ss4.png)
-
-### Profile 
-![Profile](screenshot/ss5.png)
-
----
-
-## 🎥 Demo
-
-![Demo](screenshot/video1.mp4)
