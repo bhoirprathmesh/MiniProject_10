@@ -3,7 +3,9 @@ import { createContext, useContext, useEffect, useState } from "react";
 
 export const AuthContext = createContext();
 
-export const AuthProvider = ({children}) => { 
+export const AuthProvider = ({ children }) => { 
+    
+    const url = "https://miniproject-10-server.onrender.com";
 
     const [token, setToken] = useState(localStorage.getItem("token"));
     const [user, setUSer] = useState("");
@@ -27,11 +29,11 @@ export const AuthProvider = ({children}) => {
     // JWT Authentication - to get currently logged in user data 
     const userAuthentication = async () => {
         try {
-            const response = await fetch('http://localhost:4000/auth/user', {
-                method: 'GET',
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                },
+            const response = await fetch(`${url}/auth/user`, {
+              method: "GET",
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
             });
 
             if(response.ok) {
@@ -47,8 +49,8 @@ export const AuthProvider = ({children}) => {
     // to fetch the facility from the database
     const getFacility = async () => {
         try {
-            const response = await fetch('http://localhost:4000/data/facility',{
-                method: 'GET',
+            const response = await fetch(`${url}/data/facility`, {
+              method: "GET",
             });
 
             if(response.ok) {
@@ -63,8 +65,8 @@ export const AuthProvider = ({children}) => {
 
     const getAppointment = async () => {
         try{
-            const response = await fetch('http://localhost:4000/data/booking_data', {
-                method: 'GET',
+            const response = await fetch(`${url}/data/booking_data`, {
+              method: "GET",
             });
 
             if(response.ok) {
