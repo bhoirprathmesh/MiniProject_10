@@ -96,6 +96,11 @@ npm run dev
 Open your browser at:
 http://localhost:5173
 
+---
+
+### 👀Preview Live :
+https://miniproject-10-frontend.onrender.com
+
 ### ✅ To Screenshot & How it Work:
 ## 📸 Screenshots
 
